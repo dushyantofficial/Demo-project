@@ -52,7 +52,7 @@
                                         <td>@if(isset($user->user_name)){{translateToGujarati($user->user_name)}} @endif</td>
                                         <td>@if(isset($user->gender)){{translateToGujarati($user->gender)}} @endif</td>
                                         <td>@if(isset($user->email)){{translateToGujarati($user->email)}} @endif</td>
-                                        <td>@if(isset($user->mobile_number)){{gujarati_number($user->mobile)}} @endif</td>
+                                        <td>@if(isset($user->mobile)){{gujarati_number($user->mobile)}} @endif</td>
                                         <td>@if(isset($user->created_by)){{translateToGujarati($user->users->user_name) }} @endif</td>
                                     @else
                                         <th scope="row">{{$loop->iteration}}</th>
@@ -64,7 +64,7 @@
                                         <td>@if(isset($user->user_name)){{translateToEnglish($user->user_name)}} @endif</td>
                                         <td>@if(isset($user->gender)){{translateToEnglish($user->gender)}} @endif</td>
                                         <td>@if(isset($user->email)){{translateToEnglish($user->email)}} @endif</td>
-                                        <td>@if(isset($user->mobile_number)){{translateToEnglish($user->mobile)}} @endif</td>
+                                        <td>@if(isset($user->mobile)){{translateToEnglish($user->mobile)}} @endif</td>
                                         <td>@if(isset($user->created_by)){{translateToEnglish($user->users->user_name) }} @endif</td>
                                     @endif
                                     <td>
