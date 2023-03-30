@@ -118,7 +118,7 @@
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td style="padding: 7px;">{{translateToGujarati($customer->cust_name)}} </td>
                                                 @else
-                                                    <td style="padding: 7px;">{{$customer->customer_name}} </td>
+                                                    <td style="padding: 7px;">{{$customer->cust_name}} </td>
                                                 @endif
                                             @endif
                                             @if(isset($input['field']['cust_code']))
@@ -241,7 +241,7 @@
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td style="padding: 7px;">{{translateToGujarati($customer->cust_name)}} </td>
                                                 @else
-                                                    <td style="padding: 7px;">{{$customer->customer_name}} </td>
+                                                    <td style="padding: 7px;">{{$customer->cust_name}} </td>
                                                 @endif
                                             @endif
                                             @if(isset($input['field']['cust_code']))

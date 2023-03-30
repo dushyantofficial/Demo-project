@@ -49,20 +49,20 @@
 
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.gst_number')</label>
-                                    <input type="text" name="gst_number" value="{{old('gst_number')}}"
-                                           class="form-control @error('gst_number') is-invalid @enderror"
+                                    <input type="text" name="gst_num" value="{{old('gst_num')}}"
+                                           class="form-control @error('gst_num') is-invalid @enderror"
                                            id="inputEmail4">
-                                    @error('gst_number')
+                                    @error('gst_num')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.registration_num')</label>
-                                    <input type="text" name="registration_num" value="{{old('registration_num')}}"
-                                           class="form-control @error('registration_num') is-invalid @enderror"
+                                    <input type="text" name="reg_num" value="{{old('reg_num')}}"
+                                           class="form-control @error('reg_num') is-invalid @enderror"
                                            id="inputEmail4">
-                                    @error('registration_num')
+                                    @error('reg_num')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -92,20 +92,20 @@
 
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.mobile_number')</label>
-                                    <input type="number" name="mobile_number" value="{{old('mobile_number')}}"
-                                           class="form-control @error('mobile_number') is-invalid @enderror"
+                                    <input type="number" name="mobile" value="{{old('mobile')}}"
+                                           class="form-control @error('mobile') is-invalid @enderror"
                                            id="inputEmail4">
-                                    @error('mobile_number')
+                                    @error('mobile')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.profile_pic')</label>
-                                    <input type="file" name="profile_pic" value="{{old('profile_pic')}}"
-                                           class="form-control @error('profile_pic') is-invalid @enderror"
+                                    <input type="file" name="profile" value="{{old('profile')}}"
+                                           class="form-control @error('profile') is-invalid @enderror"
                                            id="inputEmail4">
-                                    @error('profile_pic')
+                                    @error('profile')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

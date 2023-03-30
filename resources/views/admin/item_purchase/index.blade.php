@@ -34,14 +34,14 @@
                                         @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                             <th scope="row">{{gujarati_number($loop->iteration)}}</th>
                                             <td>{{translateToGujarati($item_purchase->item_name->item_name)}}</td>
-                                            <td>{{gujarati_number($item_purchase->item_quantity)}}</td>
+                                            <td>{{gujarati_number($item_purchase->item_qty)}}</td>
                                         @else
                                             <th scope="row">{{$loop->iteration}}</th>
                                             <td>{{$item_purchase->item_name->item_name}}</td>
-                                            <td>{{$item_purchase->item_quantity}}</td>
+                                            <td>{{$item_purchase->item_qty}}</td>
                                         @endif
-                                        <td>{{get_rupee_currency($item_purchase->Purchase_Rate)}}</td>
-                                        <td>{{get_rupee_currency($item_purchase->Sales_Rates)}}</td>
+                                        <td>{{get_rupee_currency($item_purchase->purchase_rate)}}</td>
+                                        <td>{{get_rupee_currency($item_purchase->sales_rate)}}</td>
                                         @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                             <td>{{gujarati_date($item_purchase->purchase_date)}}</td>
                                         @else

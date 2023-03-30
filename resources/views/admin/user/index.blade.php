@@ -31,9 +31,7 @@
                                 <th scope="col">@lang('langs.mandali_address')</th>
                                 <th scope="col">@lang('langs.gst_number')</th>
                                 <th scope="col">@lang('langs.registration_num')</th>
-                                <th scope="col">@lang('langs.customer_name')</th>
                                 <th scope="col">@lang('langs.user_name')</th>
-                                <th scope="col">@lang('langs.customer_code')</th>
                                 <th scope="col">@lang('langs.gender')</th>
                                 <th scope="col">@lang('langs.email')</th>
                                 <th scope="col">@lang('langs.mobile_number')</th>
@@ -49,28 +47,24 @@
                                         <td>{{translateToGujarati($user->mandali_code)}}</td>
                                         <td>@if(isset($user->mandali_name)){{translateToGujarati($user->mandali_name)}} @endif</td>
                                         <td>@if(isset($user->mandali_address)){{translateToGujarati($user->mandali_address)}} @endif</td>
-                                        <td>@if(isset($user->gst_number)){{translateToGujarati($user->gst_number)}} @endif</td>
-                                        <td>@if(isset($user->registration_num)){{translateToGujarati($user->registration_num)}} @endif</td>
-                                        <td>@if(isset($user->customer_name)){{translateToGujarati($user->customer_name)}} @endif</td>
+                                        <td>@if(isset($user->gst_number)){{translateToGujarati($user->gst_num)}} @endif</td>
+                                        <td>@if(isset($user->registration_num)){{translateToGujarati($user->reg_num)}} @endif</td>
                                         <td>@if(isset($user->user_name)){{translateToGujarati($user->user_name)}} @endif</td>
-                                        <td>@if(isset($user->customer_code)){{gujarati_number($user->customer_code)}} @endif</td>
                                         <td>@if(isset($user->gender)){{translateToGujarati($user->gender)}} @endif</td>
                                         <td>@if(isset($user->email)){{translateToGujarati($user->email)}} @endif</td>
-                                        <td>@if(isset($user->mobile_number)){{gujarati_number($user->mobile_number)}} @endif</td>
+                                        <td>@if(isset($user->mobile_number)){{gujarati_number($user->mobile)}} @endif</td>
                                         <td>@if(isset($user->created_by)){{translateToGujarati($user->users->user_name) }} @endif</td>
                                     @else
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{translateToEnglish($user->mandali_code)}}</td>
                                         <td>@if(isset($user->mandali_name)){{translateToEnglish($user->mandali_name)}} @endif</td>
                                         <td>@if(isset($user->mandali_address)){{translateToEnglish($user->mandali_address)}} @endif</td>
-                                        <td>@if(isset($user->gst_number)){{translateToEnglish($user->gst_number)}} @endif</td>
-                                        <td>@if(isset($user->registration_num)){{translateToEnglish($user->registration_num)}} @endif</td>
-                                        <td>@if(isset($user->customer_name)){{translateToEnglish($user->customer_name)}} @endif</td>
+                                        <td>@if(isset($user->gst_number)){{translateToEnglish($user->gst_num)}} @endif</td>
+                                        <td>@if(isset($user->registration_num)){{translateToEnglish($user->reg_num)}} @endif</td>
                                         <td>@if(isset($user->user_name)){{translateToEnglish($user->user_name)}} @endif</td>
-                                        <td>@if(isset($user->customer_code)){{translateToEnglish($user->customer_code)}} @endif</td>
                                         <td>@if(isset($user->gender)){{translateToEnglish($user->gender)}} @endif</td>
                                         <td>@if(isset($user->email)){{translateToEnglish($user->email)}} @endif</td>
-                                        <td>@if(isset($user->mobile_number)){{translateToEnglish($user->mobile_number)}} @endif</td>
+                                        <td>@if(isset($user->mobile_number)){{translateToEnglish($user->mobile)}} @endif</td>
                                         <td>@if(isset($user->created_by)){{translateToEnglish($user->users->user_name) }} @endif</td>
                                     @endif
                                     <td>

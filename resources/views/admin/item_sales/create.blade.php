@@ -135,26 +135,26 @@
 
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.customer_name')</label>
-                                    <select class="form-control select2 @error('customer_id') is-invalid @enderror"
-                                            name="customer_id" id="customer_id">
+                                    <select class="form-control select2 @error('CustId') is-invalid @enderror"
+                                            name="CustId" id="CustId">
                                         <option value="">---@lang('langs.select_customer_name')---</option>
                                         @foreach($customers as $customer)
                                             <option
-                                                value="{{$customer->id}}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>{{$customer->customer_name}}</option>
+                                                value="{{$customer->id}}" {{ old('CustId') == $customer->cust_id ? 'selected' : '' }}>{{$customer->customer_name}}</option>
                                         @endforeach
                                     </select>
-                                    @error('customer_id')
+                                    @error('CustId')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.item_name')</label>
-                                    <select class="form-control select2 @error('item_name_id') is-invalid @enderror"
-                                            name="item_name_id" id="opt_level">
+                                    <select class="form-control select2 @error('ItemId') is-invalid @enderror"
+                                            name="ItemId" id="opt_level">
                                         <option value="">---@lang('langs.select_item_name')---</option>
                                         @foreach($item_namess as $item_names)
                                             <option
-                                                value="{{$item_names->id}}" {{ old('item_name_id') == $item_names->item_name_id ? 'selected' : '' }}>{{$item_names->item_name->item_name}}</option>
+                                                value="{{$item_names->id}}" {{ old('ItemId') == $item_names->purchase_id ? 'selected' : '' }}>{{$item_names->item_name->item_name}}</option>
                                         @endforeach
                                     </select>
                                     @error('item_name_id')
@@ -163,11 +163,11 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.itemQuantity')</label>
-                                    <input type="number" name="item_quantity" value="{{old('item_quantity')}}"
-                                           class="form-control @error('item_quantity') is-invalid @enderror"
+                                    <input type="number" name="ItemQty" value="{{old('ItemQty')}}"
+                                           class="form-control @error('ItemQty') is-invalid @enderror"
                                            id="item_quantity">
                                     <span class="text-danger" id="invalid"></span>
-                                    @error('item_quantity')
+                                    @error('ItemQty')
 
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -186,10 +186,10 @@
 
                                 <div class="col-12">
                                     <label for="inputEmail4" class="form-label">@lang('langs.CustPhoto')</label>
-                                    <input type="file" name="customer_photo" value="{{old('customer_photo')}}"
-                                           class="form-control @error('customer_photo') is-invalid @enderror"
+                                    <input type="file" name="CustPhoto" value="{{old('CustPhoto')}}"
+                                           class="form-control @error('CustPhoto') is-invalid @enderror"
                                            id="inputEmail4">
-                                    @error('customer_photo')
+                                    @error('CustPhoto')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

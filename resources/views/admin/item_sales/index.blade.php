@@ -45,10 +45,10 @@
                                     <tr>
                                         @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                             <th scope="row">{{gujarati_number($loop->iteration)}}</th>
-                                            <td>{{translateToGujarati($item_sales->customers->customer_name)}}</td>
-                                            <td>{{gujarati_number($item_sales->customers->customer_code)}}</td>
+                                            <td>{{translateToGujarati($item_sales->customers->cust_name)}}</td>
+                                            <td>{{gujarati_number($item_sales->customers->cust_code)}}</td>
                                             <td>{{translateToGujarati($item_sales->item_names->item_name->item_name)}}</td>
-                                            <td>{{translateToGujarati($item_sales->item_quantity)}}</td>
+                                            <td>{{translateToGujarati($item_sales->ItemQty)}}</td>
                                             <td>{{gujarati_date($item_sales->payment_from_date)}}</td>
                                             <td>{{gujarati_date($item_sales->payment_to_date)}}</td>
 {{--                                            <td>{{translateToGujarati($item_sales->from_morning_evening)}}</td>--}}
@@ -64,10 +64,10 @@
                                             <td>{{gujarati_date($item_sales->created_at)}}</td>
                                         @else
                                             <th scope="row">{{$loop->iteration}}</th>
-                                            <td>{{$item_sales->customers->customer_name}}</td>
-                                            <td>{{$item_sales->customers->customer_code}}</td>
+                                            <td>{{$item_sales->customers->cust_name}}</td>
+                                            <td>{{$item_sales->customers->cust_code}}</td>
                                             <td>{{$item_sales->item_names->item_name->item_name}}</td>
-                                            <td>{{$item_sales->item_quantity}}</td>
+                                            <td>{{$item_sales->ItemQty}}</td>
                                             <td>{{formate_date($item_sales->payment_from_date)}}</td>
                                             <td>{{formate_date($item_sales->payment_to_date)}}</td>
 {{--                                            <td>{{translateToEnglish($item_sales->from_morning_evening)}}</td>--}}

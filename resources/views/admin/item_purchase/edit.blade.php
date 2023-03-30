@@ -37,29 +37,29 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="inputEmail4" class="form-label">@lang('langs.itemQuantity')</label>
-                                    <input type="number" name="item_quantity" value="{{$item_purchases->item_quantity}}"
-                                           class="form-control @error('item_quantity') is-invalid @enderror"
+                                    <input type="number" name="item_qty" value="{{$item_purchases->item_qty}}"
+                                           class="form-control @error('item_qty') is-invalid @enderror"
                                            id="inputNanme4">
 
-                                    @error('item_quantity')
+                                    @error('item_qty')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="col-4">
                                     <label for="inputNanme4" class="form-label">@lang('langs.Purchase_Rate')</label>
-                                    <input type="number" name="Purchase_Rate" value="{{$item_purchases->Purchase_Rate}}"
-                                           class="form-control @error('Purchase_Rate') is-invalid @enderror"
+                                    <input type="number" name="Purchase_Rate" value="{{$item_purchases->purchase_rate}}"
+                                           class="form-control @error('purchase_rate') is-invalid @enderror"
                                            id="inputNanme4">
-                                    @error('Purchase_Rate')
+                                    @error('purchase_rate')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="col-4">
                                     <label for="inputNanme4" class="form-label">@lang('langs.Sales_Rates')</label>
-                                    <input type="number" name="Sales_Rates" value="{{$item_purchases->Sales_Rates}}"
-                                           class="form-control @error('Sales_Rates') is-invalid @enderror"
+                                    <input type="number" name="sales_rate" value="{{$item_purchases->sales_rate}}"
+                                           class="form-control @error('sales_rate') is-invalid @enderror"
                                            id="inputNanme4">
-                                    @error('Sales_Rates')
+                                    @error('sales_rate')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
