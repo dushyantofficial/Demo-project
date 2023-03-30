@@ -15,7 +15,7 @@ class PaymentReportController extends Controller
     public function payment_register_report(Request $request){
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $filter_payment_register = Customers::orderBy('id', 'desc')->get();
+            $filter_payment_register = Customers::orderBy('cust_id', 'desc')->get();
             $bank_names = Customers::orderBy('bank_name', 'asc')->distinct()->get();
             if ($request->date) {
                 $date = $request->date;
@@ -33,7 +33,7 @@ class PaymentReportController extends Controller
             }
             return view('admin.payment.payment_register.payment_register_report', compact('filter_payment_register', 'bank_names'));
         }
-        $filter_payment_register = Customers::where('user_id', $user->id)->orderBy('id', 'desc')->get();
+        $filter_payment_register = Customers::where('user_id', $user->id)->orderBy('cust_id', 'desc')->get();
         $bank_names = Customers::where('user_id', $user->id)->orderBy('bank_name', 'desc')->get();
         if ($request->date) {
             $date = $request->date;
@@ -56,7 +56,7 @@ class PaymentReportController extends Controller
 
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $payment_register_report_pdfs = Customers::orderBy('id','desc')->get();
+            $payment_register_report_pdfs = Customers::orderBy('cust_id','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -78,7 +78,7 @@ class PaymentReportController extends Controller
                 return $pdf->download('payment_register_report.pdf');
             }
         }
-        $payment_register_report_pdfs = Customers::where('user_id', $user->id)->orderBy('id','desc')->get();
+        $payment_register_report_pdfs = Customers::where('user_id', $user->id)->orderBy('cust_id','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
@@ -187,7 +187,7 @@ class PaymentReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $filter_payment_deduct = ItemSales::orderBy('id', 'desc')->get();
+            $filter_payment_deduct = ItemSales::orderBy('ItemSalesId', 'desc')->get();
             $bank_names = Customers::orderBy('bank_name', 'asc')->distinct()->get();
             if ($request->date) {
                 $date = $request->date;
@@ -202,14 +202,14 @@ class PaymentReportController extends Controller
             }
             return view('admin.payment.payment_deduct.payment_deduct_report', compact('filter_payment_deduct', 'bank_names'));
         }
-        $filter_payment_deduct = ItemSales::where('created_by', $user->id)->orderBy('id', 'desc')->get();
+        $filter_payment_deduct = ItemSales::where('InsertedByUserId', $user->id)->orderBy('ItemSalesId', 'desc')->get();
         $bank_names = Customers::where('user_id', $user->id)->orderBy('bank_name', 'desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $filter_customers = Customers::where('user_id', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->whereHas('customers', function ($query) use ($request) {
+            $filter_customers = Customers::where('InsertedByUserId', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->whereHas('customers', function ($query) use ($request) {
                 $query->whereBetween('customer_code', [$request->customer_from_code, $request->customer_to_code]);
             })->get();
         }
@@ -221,7 +221,7 @@ class PaymentReportController extends Controller
 
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $payment_deduct_report_pdfs = ItemSales::orderBy('id','desc')->get();
+            $payment_deduct_report_pdfs = ItemSales::orderBy('ItemSalesId','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -240,13 +240,13 @@ class PaymentReportController extends Controller
                 return $pdf->download('payment_deduct_report.pdf');
             }
         }
-        $payment_deduct_report_pdfs = ItemSales::where('user_id', $user->id)->orderBy('id','desc')->get();
+        $payment_deduct_report_pdfs = ItemSales::where('insertedByUserId', $user->id)->orderBy('ItemSalesId','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $payment_deduct_report_pdfs = ItemSales::where('user_id', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->whereHas('customers', function ($query) use ($request) {
+            $payment_deduct_report_pdfs = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->whereHas('customers', function ($query) use ($request) {
                 $query->whereBetween('customer_code', [$request->customer_from_code, $request->customer_to_code]);
             })->get();
         }
@@ -286,13 +286,13 @@ class PaymentReportController extends Controller
             }
             return view('admin.payment.payment_deduct.payment_deduct_report_export', compact('item_saless', 'input'));
         }
-        $item_saless = ItemSales::where('created_by', $user->id)->select($val)->get();
+        $item_saless = ItemSales::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_saless = ItemSales::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_saless = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
         return view('admin.payment.payment_deduct.payment_deduct_report_export', compact('item_saless', 'input'));
@@ -324,13 +324,13 @@ class PaymentReportController extends Controller
                 return $pdf->download('payment_deduct_report_export.pdf');
             }
         }
-        $item_sales_reports = ItemSales::where('created_by', $user->id)->select($val)->get();
+        $item_sales_reports = ItemSales::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_sales_reports = ItemSales::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_sales_reports = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
 

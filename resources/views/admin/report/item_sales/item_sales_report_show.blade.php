@@ -119,9 +119,9 @@
                                                     <td>{{$item_sales->item_names->item_name->item_name}}</td>
                                                 @endif
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td>{{gujarati_number($item_sales->item_quantity)}}</td>
+                                                    <td>{{gujarati_number($item_sales->ItemQty)}}</td>
                                                 @else
-                                                    <td>{{$item_sales->item_quantity}}</td>
+                                                    <td>{{$item_sales->ItemQty}}</td>
                                                 @endif
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{gujarati_date($item_sales->payment_from_date)}}</td>
@@ -210,9 +210,9 @@
                                                 <td>{{$item_sales->item_names->item_name->item_name}}</td>
                                             @endif
                                             @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                <td>{{gujarati_number($item_sales->item_quantity)}}</td>
+                                                <td>{{gujarati_number($item_sales->ItemQty)}}</td>
                                             @else
-                                                <td>{{$item_sales->item_quantity}}</td>
+                                                <td>{{$item_sales->ItemQty}}</td>
                                             @endif
                                             @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                 <td>{{gujarati_date($item_sales->payment_from_date)}}</td>
@@ -290,8 +290,8 @@
 
                                     <div class="col-md-2">
                                         <input type="checkbox" id="customer_name" class="check_all"
-                                               name="field[customer_id]"
-                                               value="customer_id">
+                                               name="field[CustId]"
+                                               value="CustId">
                                         <label for="customer_name"> @lang('langs.customer_name') </label><br>
                                         <input type="checkbox" id="payment_from_date" class="check_all"
                                                name="field[payment_from_date]"
@@ -313,8 +313,8 @@
                                     </div>
                                     <div class="col-md-2">
                                         <input type="checkbox" id="item_name" class="check_all"
-                                               name="field[item_name_id]"
-                                               value="item_name_id">
+                                               name="field[ItemId]"
+                                               value="ItemId">
                                         <label for="bank_name"> @lang('langs.item_name')</label><br>
                                         <input type="checkbox" id="payment_to_date" class="check_all"
                                                name="field[payment_to_date]"
@@ -334,9 +334,9 @@
 
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="item_quantity" class="check_all"
-                                               name="field[item_quantity]"
-                                               value="item_quantity">
+                                        <input type="checkbox" id="ItemQty" class="check_all"
+                                               name="field[ItemQty]"
+                                               value="ItemQty">
                                         <label for="itemQuantity"> @lang('langs.itemQuantity')</label><br>
                                         <input type="checkbox" id="from_morning_evening" class="check_all"
                                                name="field[from_morning_evening]"
@@ -350,9 +350,9 @@
                                         <input type="checkbox" id="payment" class="check_all" name="field[payment]"
                                                value="payment">
                                         <label for="payment"> @lang('langs.payment')</label><br>
-                                        <input type="checkbox" id="created_by" class="check_all"
-                                               name="field[created_by]"
-                                               value="created_by">
+                                        <input type="checkbox" id="InsertedByUserId" class="check_all"
+                                               name="field[InsertedByUserId]"
+                                               value="InsertedByUserId">
                                         <label for="payment"> @lang('langs.created_by')</label><br>
                                     </div>
                                     <span style="color: red;margin-left: 421px;">{{$errors->first('field')}}</span>

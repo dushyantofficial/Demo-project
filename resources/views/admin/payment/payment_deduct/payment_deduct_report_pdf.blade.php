@@ -105,7 +105,7 @@
                                 @else
                                     <td style="padding: 7px;">{{$payment_deduct_report_pdf->item_names->item_name->item_name}}</td>
                                 @endif
-                                <td style="padding: 7px;">{{$payment_deduct_report_pdf->item_quantity}}</td>
+                                <td style="padding: 7px;">{{$payment_deduct_report_pdf->ItemQty}}</td>
                                 <td style="padding: 7px;">{{$payment_deduct_report_pdf->payment_from_date}}</td>
                                 <td style="padding: 7px;">{{$payment_deduct_report_pdf->payment_to_date}}</td>
                                 <td style="padding: 7px;">{{$payment_deduct_report_pdf->entry_date}}</td>

@@ -60,11 +60,11 @@
                                             <th> @lang('langs.user_name')</th>
                                         @endif
 
-                                        @if(isset($input['field']['customer_name']))
+                                        @if(isset($input['field']['cust_name']))
                                             <th> @lang('langs.customer_name')</th>
 
                                         @endif
-                                        @if(isset($input['field']['customer_code']))
+                                        @if(isset($input['field']['cust_code']))
                                             <th> @lang('langs.customer_code')</th>
 
                                         @endif
@@ -86,7 +86,7 @@
                                             <th> @lang('langs.final_amount')</th>
 
                                         @endif
-                                        @if(isset($input['field']['created_by']))
+                                        @if(isset($input['field']['insertedByUserId']))
                                             <th> @lang('langs.created_by')</th>
 
                                         @endif
@@ -114,16 +114,16 @@
                                                 @endif
                                             @endif
 
-                                            @if(isset($input['field']['customer_name']))
+                                            @if(isset($input['field']['cust_name']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td style="padding: 7px;">{{translateToGujarati($customer->customer_name)}} </td>
+                                                    <td style="padding: 7px;">{{translateToGujarati($customer->cust_name)}} </td>
                                                 @else
                                                     <td style="padding: 7px;">{{$customer->customer_name}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['customer_code']))
+                                            @if(isset($input['field']['cust_code']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td style="padding: 7px;">{{gujarati_number($customer->customer_code)}} </td>
+                                                    <td style="padding: 7px;">{{gujarati_number($customer->cust_code)}} </td>
                                                 @else
                                                     <td style="padding: 7px;">{{$customer->customer_code}} </td>
                                                 @endif
@@ -148,7 +148,7 @@
                                             @if(isset($input['field']['final_amount']))
                                                 <td style="padding: 7px;">{{get_rupee_currency($customer->final_amount)}} </td>
                                             @endif
-                                            @if(isset($input['field']['created_by']))
+                                            @if(isset($input['field']['insertedByUserId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td style="padding: 7px;">{{translateToGujarati($customer->created_bys->user_name)}} </td>
                                                 @else
@@ -183,11 +183,11 @@
                                             <th> @lang('langs.user_name')</th>
                                         @endif
 
-                                        @if(isset($input['field']['customer_name']))
+                                        @if(isset($input['field']['cust_name']))
                                             <th> @lang('langs.customer_name')</th>
 
                                         @endif
-                                        @if(isset($input['field']['customer_code']))
+                                        @if(isset($input['field']['cust_code']))
                                             <th> @lang('langs.customer_code')</th>
 
                                         @endif
@@ -209,7 +209,7 @@
                                             <th> @lang('langs.final_amount')</th>
 
                                         @endif
-                                        @if(isset($input['field']['created_by']))
+                                        @if(isset($input['field']['insertedByUserId']))
                                             <th> @lang('langs.created_by')</th>
 
                                         @endif
@@ -229,7 +229,6 @@
                                             @else
                                                 <td>{{$loop->iteration}}</td>
                                             @endif
-
                                             @if(isset($input['field']['user_id']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td class="ml-1 mr-1" style="padding: 7px;">{{ translateToGujarati($customer->user->user_name)}}</td>
@@ -238,16 +237,16 @@
                                                 @endif
                                             @endif
 
-                                            @if(isset($input['field']['customer_name']))
+                                            @if(isset($input['field']['cust_name']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td style="padding: 7px;">{{translateToGujarati($customer->customer_name)}} </td>
+                                                    <td style="padding: 7px;">{{translateToGujarati($customer->cust_name)}} </td>
                                                 @else
                                                     <td style="padding: 7px;">{{$customer->customer_name}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['customer_code']))
+                                            @if(isset($input['field']['cust_code']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td style="padding: 7px;">{{gujarati_number($customer->customer_code)}} </td>
+                                                    <td style="padding: 7px;">{{gujarati_number($customer->cust_code)}} </td>
                                                 @else
                                                     <td style="padding: 7px;">{{$customer->customer_code}} </td>
                                                 @endif
@@ -261,7 +260,7 @@
                                             @endif
                                             @if(isset($input['field']['account_number']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                <td style="padding: 7px;">{{gujarati_number($customer->account_number)}} </td>
+                                                    <td style="padding: 7px;">{{gujarati_number($customer->account_number)}} </td>
                                                 @else
                                                     <td style="padding: 7px;">{{$customer->account_number}} </td>
                                                 @endif
@@ -272,7 +271,7 @@
                                             @if(isset($input['field']['final_amount']))
                                                 <td style="padding: 7px;">{{get_rupee_currency($customer->final_amount)}} </td>
                                             @endif
-                                            @if(isset($input['field']['created_by']))
+                                            @if(isset($input['field']['insertedByUserId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td style="padding: 7px;">{{translateToGujarati($customer->created_bys->user_name)}} </td>
                                                 @else

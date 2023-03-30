@@ -120,18 +120,18 @@
                                 <td style="padding: 7px;">{{ $loop->iteration }}</td>
                                 @if(isset($input['field']['user_id']))
                                     <td class="ml-1 mr-1"
-                                        style="padding: 7px;">{{ $customer_report->user->mobile_number}}</td>
+                                        style="padding: 7px;">{{ $customer_report->user->mobile}}</td>
                                 @endif
 
-                                @if(isset($input['field']['customer_name']))
+                                @if(isset($input['field']['cust_name']))
                                     @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                        <td style="padding: 7px;">{{translateToGujarati($customer_report->customer_name)}} </td>
+                                        <td style="padding: 7px;">{{translateToGujarati($customer_report->cust_name)}} </td>
                                     @else
-                                        <td style="padding: 7px;">{{$customer_report->customer_name}} </td>
+                                        <td style="padding: 7px;">{{$customer_report->cust_name}} </td>
                                     @endif
                                 @endif
-                                @if(isset($input['field']['customer_code']))
-                                    <td style="padding: 7px;">{{$customer_report->customer_code}} </td>
+                                @if(isset($input['field']['cust_code']))
+                                    <td style="padding: 7px;">{{$customer_report->cust_code}} </td>
                                 @endif
                                 @if(isset($input['field']['bank_name']))
                                     @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')

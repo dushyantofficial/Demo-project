@@ -16,11 +16,11 @@ class ItemName extends Model
     public $table = 'tk_itemname';
     protected $fillable = [
         'item_name',
-        'created_by',
+        'insertedByUserId',
     ];
 
     public function created_bys()
     {
-        return $this->belongsTo(User::class, 'created_by', 'id');
+        return $this->belongsTo(User::class, 'insertedByUserId', 'id');
     }
 }

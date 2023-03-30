@@ -21,7 +21,7 @@ class ItemSalesController extends Controller
             $item_saless = ItemSales::orderBy('ItemSalesId','desc')->get();
             return view('admin.item_sales.index', compact('item_saless'));
         }
-        $item_saless = ItemSales::where('created_by', $user->id)->orderBy('ItemSalesId','desc')->get();
+        $item_saless = ItemSales::where('InsertedByUserId', $user->id)->orderBy('ItemSalesId','desc')->get();
         return view('admin.item_sales.index', compact('item_saless'));
     }
 
@@ -35,7 +35,7 @@ class ItemSalesController extends Controller
             return view('admin.item_sales.create', compact('item_namess', 'customers'));
         }
         $customers = Customers::where('user_id', $user->id)->get();
-        $item_namess = ItemPurchase::where('created_by', $user->id)->get();
+        $item_namess = ItemPurchase::where('InsertedByUserId', $user->id)->get();
         return view('admin.item_sales.create', compact('item_namess', 'customers'));
     }
 
@@ -44,11 +44,11 @@ class ItemSalesController extends Controller
 
         $request->validate(ItemSales::$rules);
         $input = $request->all();
-        $input['created_by'] = Auth::user()->id;
-        if ($request->hasFile("customer_photo")) {
-            $img = $request->file("customer_photo");
+        $input['InsertedByUserId'] = Auth::user()->id;
+        if ($request->hasFile("CustPhoto")) {
+            $img = $request->file("CustPhoto");
             $img->store('public/images');
-            $input['customer_photo'] = $img->hashName();
+            $input['CustPhoto'] = $img->hashName();
         }
         ItemSales::create($input);
         return redirect()->route('item_sales.index')->with('success', Lang::get('langs.flash_suc'));
@@ -72,17 +72,17 @@ class ItemSalesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = ItemSales::$rules;
-        $rules['customer_photo'] = 'nullable';
+        $rules['CustPhoto'] = 'nullable';
         $request->validate($rules);
         $item_saless = ItemSales::find($id);
         $input = $request->all();
-        if ($request->hasFile("customer_photo")) {
-            $img = $request->file("customer_photo");
-            if (Storage::exists('public/images' . $item_saless->customer_photo)) {
-                Storage::delete('public/images' . $item_saless->customer_photo);
+        if ($request->hasFile("CustPhoto")) {
+            $img = $request->file("CustPhoto");
+            if (Storage::exists('public/images' . $item_saless->CustPhoto)) {
+                Storage::delete('public/images' . $item_saless->CustPhoto);
             }
             $img->store('public/images');
-            $input['customer_photo'] = $img->hashName();
+            $input['CustPhoto'] = $img->hashName();
             $item_saless->update($input);
 
         }

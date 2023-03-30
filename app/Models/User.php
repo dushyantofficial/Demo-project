@@ -14,7 +14,7 @@ class User extends Authenticatable
         'mandali_code' => 'required',
         'email' => 'required',
         'user_name' => 'required',
-        'mobile_number' => 'required|min:10:max:10',
+        'mobile' => 'required|min:10:max:10',
         'password' => 'required',
         'gender' => 'required',
 
@@ -26,7 +26,7 @@ class User extends Authenticatable
         'mandali_code' => 'required',
         'email' => 'required',
         'user_name' => 'required',
-        'mobile_number' => 'required|min:10|max:10',
+        'mobile' => 'required|min:10|max:10',
         'gender' => 'required',
 
     ];
@@ -38,17 +38,17 @@ class User extends Authenticatable
     protected $fillable = [
         'customer_name',
         'mandali_code',
-        'created_by',
+        'InsertedByUserId',
         'email',
         'user_name',
-        'customer_code',
+        'cust_code',
         'mandali_name',
         'mandali_address',
-        'mobile_number',
-        'gst_number',
-        'registration_num',
+        'mobile',
+        'gst_num',
+        'reg_num',
         'role',
-        'profile_pic',
+        'profile',
         'password',
         'gender',
         'lang',
@@ -72,7 +72,7 @@ class User extends Authenticatable
     ];
 
     public function users(){
-        return  $this->belongsTo(User::class,'created_by','id');
+        return  $this->belongsTo(User::class,'insertedByUserId','id');
     }
 
 

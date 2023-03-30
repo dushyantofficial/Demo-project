@@ -76,20 +76,20 @@
                         <thead>
                         <tr class="text-center">
                             <td style="padding: 7px;">@lang('langs.item_sales_no')</td>
-                            @if(isset($input['field']['customer_id']))
+                            @if(isset($input['field']['CustId']))
                                 <td style="padding: 7px;"> @lang('langs.customer_name')</td>
 
                             @endif
-                            @if(isset($input['field']['customer_id']))
+                            @if(isset($input['field']['CustId']))
                                 <td style="padding: 7px;"> @lang('langs.customer_code')</td>
 
                             @endif
-                            @if(isset($input['field']['item_name_id']))
+                            @if(isset($input['field']['ItemId']))
                                 <td style="padding: 7px;"> @lang('langs.item_name')</td>
 
                             @endif
 
-                            @if(isset($input['field']['item_quantity']))
+                            @if(isset($input['field']['ItemQty']))
                                 <td style="padding: 7px;"> @lang('langs.itemQuantity')</td>
 
                             @endif
@@ -137,7 +137,7 @@
 
                             @endif
 
-                            @if(isset($input['field']['created_by']))
+                            @if(isset($input['field']['InsertedByUserId']))
                                 <td style="padding: 7px;"> @lang('langs.created_by')</td>
 
                             @endif
@@ -155,7 +155,7 @@
                                 <tr style="text-align: center;">
                                     <td style="padding: 7px;">{{$loop->iteration}}</td>
 
-                                    @if(isset($input['field']['customer_id']))
+                                    @if(isset($input['field']['CustId']))
                                         @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                             <td style="padding: 7px;">{{translateToGujarati($item_sales->customers->customer_name)}}</td>
                                         @else
@@ -163,11 +163,11 @@
                                         @endif
 
                                     @endif
-                                    @if(isset($input['field']['customer_id']))
+                                    @if(isset($input['field']['CustId']))
                                         <td style="padding: 7px;">{{$item_sales->customers->customer_code}}</td>
 
                                     @endif
-                                    @if(isset($input['field']['item_name_id']))
+                                    @if(isset($input['field']['ItemId']))
                                         @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                             <td style="padding: 7px;">{{translateToGujarati($item_sales->item_names->item_name->item_name)}}</td>
                                         @else
@@ -176,8 +176,8 @@
 
                                     @endif
 
-                                    @if(isset($input['field']['item_quantity']))
-                                        <td style="padding: 7px;">{{$item_sales->item_quantity}}</td>
+                                    @if(isset($input['field']['ItemQty']))
+                                        <td style="padding: 7px;">{{$item_sales->ItemQty}}</td>
 
                                     @endif
 
@@ -232,7 +232,7 @@
 
                                     @endif
 
-                                    @if(isset($input['field']['created_by']))
+                                    @if(isset($input['field']['InsertedByUserId']))
                                         @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                             <td style="padding: 7px;">{{translateToGujarati($item_sales->created_name->user_name)}}</td>
                                         @else

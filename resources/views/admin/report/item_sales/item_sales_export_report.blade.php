@@ -60,20 +60,20 @@
                                     <thead>
                                     <tr>
                                         <th>@lang('langs.item_sales_no')</th>
-                                        @if(isset($input['field']['customer_id']))
+                                        @if(isset($input['field']['CustId']))
                                             <th> @lang('langs.customer_name')</th>
 
                                         @endif
-                                        @if(isset($input['field']['customer_id']))
+                                        @if(isset($input['field']['CustId']))
                                             <th> @lang('langs.customer_code')</th>
 
                                         @endif
-                                        @if(isset($input['field']['item_name_id']))
+                                        @if(isset($input['field']['ItemId']))
                                             <th> @lang('langs.item_name')</th>
 
                                         @endif
 
-                                        @if(isset($input['field']['item_quantity']))
+                                        @if(isset($input['field']['ItemQty']))
                                             <th> @lang('langs.itemQuantity')</th>
 
                                         @endif
@@ -121,7 +121,7 @@
 
                                         @endif
 
-                                        @if(isset($input['field']['created_by']))
+                                        @if(isset($input['field']['InsertedByUserId']))
                                             <th> @lang('langs.created_by')</th>
 
                                         @endif
@@ -141,7 +141,7 @@
                                                 <td>{{$loop->iteration}}</td>
                                             @endif
 
-                                            @if(isset($input['field']['customer_id']))
+                                            @if(isset($input['field']['CustId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{translateToGujarati($item_sales->customers->customer_name)}}</td>
                                                 @else
@@ -149,7 +149,7 @@
                                                 @endif
 
                                             @endif
-                                            @if(isset($input['field']['customer_id']))
+                                            @if(isset($input['field']['CustId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{gujarati_number($item_sales->customers->customer_code)}}</td>
                                                 @else
@@ -157,7 +157,7 @@
                                                 @endif
 
                                             @endif
-                                            @if(isset($input['field']['item_name_id']))
+                                            @if(isset($input['field']['ItemId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{translateToGujarati($item_sales->item_names->item_name->item_name)}}</td>
                                                 @else
@@ -166,11 +166,11 @@
 
                                             @endif
 
-                                            @if(isset($input['field']['item_quantity']))
+                                            @if(isset($input['field']['ItemQty']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td>{{gujarati_number($item_sales->item_quantity)}}</td>
+                                                    <td>{{gujarati_number($item_sales->ItemQty)}}</td>
                                                 @else
-                                                    <td>{{$item_sales->item_quantity}}</td>
+                                                    <td>{{$item_sales->ItemQty}}</td>
                                                 @endif
 
                                             @endif
@@ -246,7 +246,7 @@
 
                                             @endif
 
-                                            @if(isset($input['field']['created_by']))
+                                            @if(isset($input['field']['InsertedByUserId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{translateToGujarati($item_sales->created_name->user_name)}}</td>
                                                 @else
@@ -283,20 +283,20 @@
                         <thead>
                         <tr>
                             <th>@lang('langs.item_sales_no')</th>
-                            @if(isset($input['field']['customer_id']))
+                            @if(isset($input['field']['CustId']))
                                 <th> @lang('langs.customer_name')</th>
 
                             @endif
-                            @if(isset($input['field']['customer_id']))
+                            @if(isset($input['field']['CustId']))
                                 <th> @lang('langs.customer_code')</th>
 
                             @endif
-                            @if(isset($input['field']['item_name_id']))
+                            @if(isset($input['field']['ItemId']))
                                 <th> @lang('langs.item_name')</th>
 
                             @endif
 
-                            @if(isset($input['field']['item_quantity']))
+                            @if(isset($input['field']['ItemQty']))
                                 <th> @lang('langs.itemQuantity')</th>
 
                             @endif
@@ -344,7 +344,7 @@
 
                             @endif
 
-                            @if(isset($input['field']['created_by']))
+                            @if(isset($input['field']['InsertedByUserId']))
                                 <th> @lang('langs.created_by')</th>
 
                             @endif
@@ -356,141 +356,139 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(isset($item_saless))
-                            @foreach($item_saless as $item_sales)
-                                <tr>
+                        @foreach($item_saless as $item_sales)
+                            <tr>
+                                @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                    <td>{{gujarati_number($loop->iteration)}}</td>
+                                @else
+                                    <td>{{$loop->iteration}}</td>
+                                @endif
+
+                                @if(isset($input['field']['CustId']))
                                     @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                        <td>{{gujarati_number($loop->iteration)}}</td>
+                                        <td>{{translateToGujarati($item_sales->customers->customer_name)}}</td>
                                     @else
-                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$item_sales->customers->customer_name}}</td>
                                     @endif
 
-                                    @if(isset($input['field']['customer_id']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{translateToGujarati($item_sales->customers->customer_name)}}</td>
-                                        @else
-                                            <td>{{$item_sales->customers->customer_name}}</td>
-                                        @endif
-
-                                    @endif
-                                    @if(isset($input['field']['customer_id']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_number($item_sales->customers->customer_code)}}</td>
-                                        @else
-                                            <td>{{$item_sales->customers->customer_code}}</td>
-                                        @endif
-
-                                    @endif
-                                    @if(isset($input['field']['item_name_id']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{translateToGujarati($item_sales->item_names->item_name->item_name)}}</td>
-                                        @else
-                                            <td>{{$item_sales->item_names->item_name->item_name}}</td>
-                                        @endif
-
+                                @endif
+                                @if(isset($input['field']['CustId']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_number($item_sales->customers->customer_code)}}</td>
+                                    @else
+                                        <td>{{$item_sales->customers->customer_code}}</td>
                                     @endif
 
-                                    @if(isset($input['field']['item_quantity']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_number($item_sales->item_quantity)}}</td>
-                                        @else
-                                            <td>{{$item_sales->item_quantity}}</td>
-                                        @endif
-
+                                @endif
+                                @if(isset($input['field']['ItemId']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{translateToGujarati($item_sales->item_names->item_name->item_name)}}</td>
+                                    @else
+                                        <td>{{$item_sales->item_names->item_name->item_name}}</td>
                                     @endif
 
-                                    @if(isset($input['field']['payment_from_date']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_date($item_sales->payment_from_date)}} </td>
-                                        @else
-                                            <td>{{formate_date($item_sales->payment_from_date)}} </td>
-                                        @endif
+                                @endif
 
+                                @if(isset($input['field']['ItemQty']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_number($item_sales->ItemQty)}}</td>
+                                    @else
+                                        <td>{{$item_sales->ItemQty}}</td>
                                     @endif
 
-                                    @if(isset($input['field']['payment_to_date']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_date($item_sales->payment_to_date)}} </td>
-                                        @else
-                                            <td>{{formate_date($item_sales->payment_to_date)}} </td>
-                                        @endif
+                                @endif
 
+                                @if(isset($input['field']['payment_from_date']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_date($item_sales->payment_from_date)}} </td>
+                                    @else
+                                        <td>{{formate_date($item_sales->payment_from_date)}} </td>
                                     @endif
 
-                                    @if(isset($input['field']['from_morning_evening']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{translateToGujarati($item_sales->from_morning_evening)}}</td>
-                                        @else
-                                            <td>{{$item_sales->from_morning_evening}}</td>
-                                        @endif
+                                @endif
 
-                                    @endif
-                                    @if(isset($input['field']['to_morning_evening']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{translateToGujarati($item_sales->to_morning_evening)}}</td>
-                                        @else
-                                            <td>{{$item_sales->to_morning_evening}}</td>
-                                        @endif
-
-                                    @endif
-                                    @if(isset($input['field']['deduct_from_date']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_date($item_sales->deduct_from_date)}} </td>
-                                        @else
-                                            <td>{{formate_date($item_sales->deduct_from_date)}} </td>
-                                        @endif
-
-                                    @endif
-                                    @if(isset($input['field']['deduct_to_date']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_date($item_sales->deduct_to_date)}} </td>
-                                        @else
-                                            <td>{{formate_date($item_sales->deduct_to_date)}} </td>
-                                        @endif
-
-                                    @endif
-                                    @if(isset($input['field']['entry_date']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_date($item_sales->entry_date)}} </td>
-                                        @else
-                                            <td>{{formate_date($item_sales->entry_date)}} </td>
-                                        @endif
-
-                                    @endif
-                                    @if(isset($input['field']['payment']))
-                                        <td>{{get_rupee_currency($item_sales->payment)}}</td>
-
-                                    @endif
-                                    @if(isset($input['field']['deduct_payment']))
-                                        <td>{{get_rupee_currency($item_sales->deduct_payment)}}</td>
-
-                                    @endif
-                                    @if(isset($input['field']['total']))
-                                        <td>{{get_rupee_currency($item_sales->total)}}</td>
-
+                                @if(isset($input['field']['payment_to_date']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_date($item_sales->payment_to_date)}} </td>
+                                    @else
+                                        <td>{{formate_date($item_sales->payment_to_date)}} </td>
                                     @endif
 
-                                    @if(isset($input['field']['created_by']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{translateToGujarati($item_sales->created_name->user_name)}}</td>
-                                        @else
-                                            <td>{{$item_sales->created_name->user_name}}</td>
-                                        @endif
+                                @endif
 
+                                @if(isset($input['field']['from_morning_evening']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{translateToGujarati($item_sales->from_morning_evening)}}</td>
+                                    @else
+                                        <td>{{$item_sales->from_morning_evening}}</td>
                                     @endif
 
-                                    @if(isset($input['field']['created_at']))
-                                        @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                            <td>{{gujarati_date($item_sales->created_at)}} </td>
-                                        @else
-                                            <td>{{formate_date($item_sales->created_at)}} </td>
-                                        @endif
-
+                                @endif
+                                @if(isset($input['field']['to_morning_evening']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{translateToGujarati($item_sales->to_morning_evening)}}</td>
+                                    @else
+                                        <td>{{$item_sales->to_morning_evening}}</td>
                                     @endif
 
-                                </tr>
-                            @endforeach
-                        @endif
+                                @endif
+                                @if(isset($input['field']['deduct_from_date']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_date($item_sales->deduct_from_date)}} </td>
+                                    @else
+                                        <td>{{formate_date($item_sales->deduct_from_date)}} </td>
+                                    @endif
+
+                                @endif
+                                @if(isset($input['field']['deduct_to_date']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_date($item_sales->deduct_to_date)}} </td>
+                                    @else
+                                        <td>{{formate_date($item_sales->deduct_to_date)}} </td>
+                                    @endif
+
+                                @endif
+                                @if(isset($input['field']['entry_date']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_date($item_sales->entry_date)}} </td>
+                                    @else
+                                        <td>{{formate_date($item_sales->entry_date)}} </td>
+                                    @endif
+
+                                @endif
+                                @if(isset($input['field']['payment']))
+                                    <td>{{get_rupee_currency($item_sales->payment)}}</td>
+
+                                @endif
+                                @if(isset($input['field']['deduct_payment']))
+                                    <td>{{get_rupee_currency($item_sales->deduct_payment)}}</td>
+
+                                @endif
+                                @if(isset($input['field']['total']))
+                                    <td>{{get_rupee_currency($item_sales->total)}}</td>
+
+                                @endif
+
+                                @if(isset($input['field']['InsertedByUserId']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{translateToGujarati($item_sales->created_name->user_name)}}</td>
+                                    @else
+                                        <td>{{$item_sales->created_name->user_name}}</td>
+                                    @endif
+
+                                @endif
+
+                                @if(isset($input['field']['created_at']))
+                                    @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
+                                        <td>{{gujarati_date($item_sales->created_at)}} </td>
+                                    @else
+                                        <td>{{formate_date($item_sales->created_at)}} </td>
+                                    @endif
+
+                                @endif
+
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

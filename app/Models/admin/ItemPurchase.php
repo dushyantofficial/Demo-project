@@ -13,18 +13,18 @@ class ItemPurchase extends Model
 
     public static $rules = [
         'item_name_id' => 'required',
-        'item_quantity' => 'required',
-        'Purchase_Rate' => 'required',
-        'Sales_Rates' => 'required',
+        'item_qty' => 'required',
+        'purchase_rate' => 'required',
+        'sales_rate' => 'required',
         'purchase_date' => 'required',
     ];
     public $table = 'tk_itempurchase';
     protected $fillable = [
         'item_name_id',
-        'item_quantity',
-        'Purchase_Rate',
-        'Sales_Rates',
-        'created_by',
+        'item_qty',
+        'purchase_rate',
+        'sales_rate',
+        'insertedByUserId',
         'purchase_date',
     ];
 
@@ -35,7 +35,7 @@ class ItemPurchase extends Model
 
     public function created_bys()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class, 'insertedByUserId');
     }
 
     public function item_sales()

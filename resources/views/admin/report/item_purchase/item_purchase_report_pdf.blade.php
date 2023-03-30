@@ -80,17 +80,17 @@
                                 <td style="padding: 7px;"> @lang('langs.item_name')</td>
 
                             @endif
-                            @if(isset($input['field']['item_quantity']))
+                            @if(isset($input['field']['item_qty']))
                                 <td style="padding: 7px;"> @lang('langs.itemQuantity')</td>
 
                             @endif
 
-                            @if(isset($input['field']['Purchase_Rate']))
+                            @if(isset($input['field']['purchase_rate']))
                                 <td style="padding: 7px;"> @lang('langs.Purchase_Rate')</td>
 
                             @endif
 
-                            @if(isset($input['field']['Sales_Rates']))
+                            @if(isset($input['field']['sales_rate']))
                                 <td style="padding: 7px;"> @lang('langs.Sales_Rates')</td>
 
                             @endif
@@ -98,7 +98,7 @@
                                 <td> @lang('langs.purchase_date')</td>
 
                             @endif
-                            @if(isset($input['field']['created_by']))
+                            @if(isset($input['field']['insertedByUserId']))
                                 <td style="padding: 7px;"> @lang('langs.created_by')</td>
 
                             @endif
@@ -124,20 +124,20 @@
                                     @endif
                                 @endif
 
-                                @if(isset($input['field']['item_quantity']))
-                                    <td style="padding: 7px;">{{$item_purchase_report->item_quantity}} </td>
+                                @if(isset($input['field']['item_qty']))
+                                    <td style="padding: 7px;">{{$item_purchase_report->item_qty}} </td>
                                 @endif
                                 @if(isset($input['field']['Purchase_Rate']))
                                     <td style="padding: 7px;">{{get_rupee_currency($item_purchase_report->Purchase_Rate)}} </td>
                                 @endif
-                                @if(isset($input['field']['Sales_Rates']))
-                                    <td style="padding: 7px;">{{get_rupee_currency($item_purchase_report->Sales_Rates)}} </td>
+                                @if(isset($input['field']['sales_rate']))
+                                    <td style="padding: 7px;">{{get_rupee_currency($item_purchase_report->sales_rate)}} </td>
                                 @endif
                                 @if(isset($input['field']['purchase_date']))
                                     <td style="padding: 7px;">{{$item_purchase_report->purchase_date}} </td>
 
                                 @endif
-                                @if(isset($input['field']['created_by']))
+                                @if(isset($input['field']['insertedByUserId']))
                                     @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                     <td style="padding: 7px;">{{translateToGujarati($item_purchase_report->created_bys->user_name)}} </td>
                                     @else

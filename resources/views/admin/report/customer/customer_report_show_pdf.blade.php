@@ -96,14 +96,14 @@
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                     <td class="ml-1 mr-1"
                                         style="padding: 7px;">{{translateToGujarati($customer_report->user->user_name)}}</td>
-                                    <td style="padding: 7px;">{{translateToGujarati($customer_report->customer_name)}}</td>
-                                    <td style="padding: 7px;">{{translateToGujarati($customer_report->customer_code)}}</td>
+                                    <td style="padding: 7px;">{{translateToGujarati($customer_report->cust_name)}}</td>
+                                    <td style="padding: 7px;">{{translateToGujarati($customer_report->cust_code)}}</td>
                                     <td style="padding: 7px;">{{translateToGujarati($customer_report->bank_name)}}</td>
                                 @else
                                     <td class="ml-1 mr-1"
                                         style="padding: 7px;">{{$customer_report->user->user_name}}</td>
-                                    <td style="padding: 7px;">{{$customer_report->customer_name}}</td>
-                                    <td style="padding: 7px;">{{$customer_report->customer_code}}</td>
+                                    <td style="padding: 7px;">{{$customer_report->cust_name}}</td>
+                                    <td style="padding: 7px;">{{$customer_report->cust_code}}</td>
                                     <td style="padding: 7px;">{{$customer_report->bank_name}}</td>
                                 @endif
                                 <td style="padding: 7px;">{{$customer_report->account_number}} </td>

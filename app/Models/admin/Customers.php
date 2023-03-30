@@ -12,8 +12,8 @@ class Customers extends Model
 
     public static $rules = [
         'bank_name' => 'required',
-        'customer_name' => 'required',
-        'customer_code' => 'required',
+        'cust_name' => 'required',
+        'cust_code' => 'required',
         'account_number' => 'required',
         'user_id' => 'required',
         'ifsc_code' => 'required',
@@ -29,13 +29,13 @@ class Customers extends Model
     public $table = 'tk_customername';
     protected $fillable = [
         'bank_name',
-        'customer_name',
-        'customer_code',
+        'cust_name',
+        'cust_code',
         'account_number',
         'user_id',
         'ifsc_code',
         'final_amount',
-        'created_by',
+        'insertedByUserId',
     ];
 
     public function user()
@@ -45,7 +45,7 @@ class Customers extends Model
 
     public function created_bys()
     {
-        return $this->belongsTo(User::class, 'created_by', 'id');
+        return $this->belongsTo(User::class, 'insertedByUserId', 'id');
     }
 
     public function customer()

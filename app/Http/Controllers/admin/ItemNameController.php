@@ -31,7 +31,7 @@ class ItemNameController extends Controller
     {
         $request->validate(ItemName::$rules);
         $input = $request->all();
-        $input['created_by'] = Auth::user()->id;
+        $input['InsertedByUserId'] = Auth::user()->id;
         ItemName::create($input);
         return redirect()->route('item_name.index')->with('success', Lang::get('langs.flash_suc'));
 

@@ -39,17 +39,17 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|unique:users,email',
             'user_name' => 'required|unique:users,user_name',
-            'mobile_number' => 'required|unique:users,mobile_number'
+            'mobile' => 'required|unique:users,mobile'
         ]);
         $input = $request->all();
         $input['password'] = Hash::make(\request('password'));
         $input['role'] = config('constants.ROLE.USER');
-        $input['created_by'] = Auth::user()->id;
+        $input['InsertedByUserId'] = Auth::user()->id;
         $input['lang'] = 'en';
-        if ($request->hasFile("profile_pic")) {
-            $img = $request->file("profile_pic");
+        if ($request->hasFile("profile")) {
+            $img = $request->file("profile");
             $img->store('public/images');
-            $input['profile_pic'] = $img->hashName();
+            $input['profile'] = $img->hashName();
         }
         User::create($input);
         return redirect()->route('user.index')->with('success', Lang::get('langs.flash_suc'));
@@ -70,7 +70,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $rules = User::$rules;
-        $rules['profile_pic'] = 'nullable';
+        $rules['profile'] = 'nullable';
         $rules['password'] = 'nullable';
         $request->validate($rules);
         $users = User::find($id);
@@ -80,13 +80,13 @@ class UserController extends Controller
             'mobile_number' => 'required|unique:users,mobile_number,' . $users->id,
         ]);
         $input = $request->all();
-        if ($request->hasFile("profile_pic")) {
+        if ($request->hasFile("profile")) {
             $img = $request->file("profile_pic");
-            if (Storage::exists('public/images' . $users->profile_pic)) {
-                Storage::delete('public/images' . $users->profile_pic);
+            if (Storage::exists('public/images' . $users->profile)) {
+                Storage::delete('public/images' . $users->profile);
             }
             $img->store('public/images');
-            $input['profile_pic'] = $img->hashName();
+            $input['profile'] = $img->hashName();
             $users->update($input);
 
         }

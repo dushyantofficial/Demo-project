@@ -2,6 +2,7 @@
 
 namespace App\Models\admin;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,10 +12,15 @@ class Payment extends Model
 
     public $table = 'tk_payment';
     protected $fillable = [
-        'customer_id',
-        'created_by',
-        'payment_from_date',
-        'payment_to_date',
+        'CustId',
+        'InsertedByUserId',
+        'PaymentFromDate',
+        'PaymentToDate',
     ];
+
+    public function created_name()
+    {
+        return $this->belongsTo(User::class, 'insertedByUserId');
+    }
 
 }

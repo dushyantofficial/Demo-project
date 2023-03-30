@@ -111,7 +111,7 @@
                                 @else
                                     <td style="padding: 7px;">{{$item_sales_report->item_names->item_name->item_name}}</td>
                                 @endif
-                                <td style="padding: 7px;">{{$item_sales_report->item_quantity}}</td>
+                                <td style="padding: 7px;">{{$item_sales_report->ItemQty}}</td>
                                 <td style="padding: 7px;">{{$item_sales_report->payment_from_date}}</td>
                                 <td style="padding: 7px;">{{$item_sales_report->payment_to_date}}</td>
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')

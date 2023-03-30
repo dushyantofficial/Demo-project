@@ -191,22 +191,22 @@
                                             <tr>
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{gujarati_number($loop->iteration)}}</td>
-                                                    <td>{{translateToGujarati($payment_deduct->customers->customer_name)}}</td>
-                                                    <td>{{gujarati_number($payment_deduct->customers->customer_code)}}</td>
+                                                    <td>{{translateToGujarati($payment_deduct->customers->cust_name)}}</td>
+                                                    <td>{{gujarati_number($payment_deduct->customers->cust_code)}}</td>
                                                 @else
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$payment_deduct->customers->customer_name}}</td>
-                                                    <td>{{$payment_deduct->customers->customer_code}}</td>
+                                                    <td>{{$payment_deduct->customers->cust_name}}</td>
+                                                    <td>{{$payment_deduct->customers->cust_code}}</td>
                                                 @endif
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{translateToGujarati($payment_deduct->item_names->item_name->item_name)}}</td>
-                                                    <td>{{gujarati_number($payment_deduct->item_quantity)}}</td>
+                                                    <td>{{gujarati_number($payment_deduct->ItemQty)}}</td>
                                                     <td>{{gujarati_date($payment_deduct->payment_from_date)}}</td>
                                                     <td>{{gujarati_date($payment_deduct->payment_to_date)}}</td>
                                                     <td>{{gujarati_date($payment_deduct->entry_date)}}</td>
                                                 @else
                                                     <td>{{$payment_deduct->item_names->item_name->item_name}}</td>
-                                                    <td>{{$payment_deduct->item_quantity}}</td>
+                                                    <td>{{$payment_deduct->ItemQty}}</td>
                                                     <td>{{formate_date($payment_deduct->payment_from_date)}}</td>
                                                     <td>{{formate_date($payment_deduct->payment_to_date)}}</td>
                                                     <td>{{formate_date($payment_deduct->entry_date)}}</td>
@@ -260,22 +260,22 @@
                             <tr>
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                     <td>{{gujarati_number($loop->iteration)}}</td>
-                                    <td>{{translateToGujarati($payment_deduct->customers->customer_name)}}</td>
-                                    <td>{{gujarati_number($payment_deduct->customers->customer_code)}}</td>
+                                    <td>{{translateToGujarati($payment_deduct->customers->cust_name)}}</td>
+                                    <td>{{gujarati_number($payment_deduct->customers->cust_code)}}</td>
                                 @else
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$payment_deduct->customers->customer_name}}</td>
-                                    <td>{{$payment_deduct->customers->customer_code}}</td>
+                                    <td>{{$payment_deduct->customers->cust_name}}</td>
+                                    <td>{{$payment_deduct->customers->cust_code}}</td>
                                 @endif
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                     <td>{{translateToGujarati($payment_deduct->item_names->item_name->item_name)}}</td>
-                                    <td>{{gujarati_number($payment_deduct->item_quantity)}}</td>
+                                    <td>{{gujarati_number($payment_deduct->ItemQty)}}</td>
                                     <td>{{gujarati_date($payment_deduct->payment_from_date)}}</td>
                                     <td>{{gujarati_date($payment_deduct->payment_to_date)}}</td>
                                     <td>{{gujarati_date($payment_deduct->entry_date)}}</td>
                                 @else
                                     <td>{{$payment_deduct->item_names->item_name->item_name}}</td>
-                                    <td>{{$payment_deduct->item_quantity}}</td>
+                                    <td>{{$payment_deduct->ItemQty}}</td>
                                     <td>{{formate_date($payment_deduct->payment_from_date)}}</td>
                                     <td>{{formate_date($payment_deduct->payment_to_date)}}</td>
                                     <td>{{formate_date($payment_deduct->entry_date)}}</td>
@@ -336,8 +336,8 @@
 
                                     <div class="col-md-2">
                                         <input type="checkbox" id="customer_name" class="check_all"
-                                               name="field[customer_id]"
-                                               value="customer_id">
+                                               name="field[CustId]"
+                                               value="CustId">
                                         <label for="customer_name"> @lang('langs.customer_name') </label><br>
                                         <input type="checkbox" id="payment_from_date" class="check_all"
                                                name="field[payment_from_date]"
@@ -356,8 +356,8 @@
                                     </div>
                                     <div class="col-md-2">
                                         <input type="checkbox" id="item_name" class="check_all"
-                                               name="field[item_name_id]"
-                                               value="item_name_id">
+                                               name="field[ItemId]"
+                                               value="ItemId">
                                         <label for="bank_name"> @lang('langs.item_name')</label><br>
                                         <input type="checkbox" id="payment_to_date" class="check_all"
                                                name="field[payment_to_date]"
@@ -369,9 +369,9 @@
 
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="item_quantity" class="check_all"
-                                               name="field[item_quantity]"
-                                               value="item_quantity">
+                                        <input type="checkbox" id="ItemQty" class="check_all"
+                                               name="field[ItemQty]"
+                                               value="ItemQty">
                                         <label for="itemQuantity"> @lang('langs.itemQuantity')</label><br>
                                         <input type="checkbox" id="payment" class="check_all" name="field[payment]"
                                                value="payment">

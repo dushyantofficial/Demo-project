@@ -95,14 +95,14 @@
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td scope="row">{{gujarati_number($loop->iteration)}}</td>
                                                     <td>{{translateToGujarati($item_purchase->item_name->item_name)}}</td>
-                                                    <td>{{gujarati_number($item_purchase->item_quantity)}}</td>
+                                                    <td>{{gujarati_number($item_purchase->item_qty)}}</td>
                                                 @else
                                                     <td scope="row">{{$loop->iteration}}</td>
                                                     <td>{{$item_purchase->item_name->item_name}}</td>
-                                                    <td>{{$item_purchase->item_quantity}}</td>
+                                                    <td>{{$item_purchase->item_qty}}</td>
                                                 @endif
-                                                <td>{{get_rupee_currency($item_purchase->Purchase_Rate)}}</td>
-                                                <td>{{get_rupee_currency($item_purchase->Sales_Rates)}}</td>
+                                                <td>{{get_rupee_currency($item_purchase->purchase_rate)}}</td>
+                                                <td>{{get_rupee_currency($item_purchase->sales_rate)}}</td>
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{gujarati_date($item_purchase->purchase_date)}} </td>
                                                 @else
@@ -146,14 +146,14 @@
                                             @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                 <td>{{gujarati_number($loop->iteration)}}</td>
                                                 <td>{{translateToGujarati($item_purchase->item_name->item_name)}}</td>
-                                                <td>{{gujarati_number($item_purchase->item_quantity)}}</td>
+                                                <td>{{gujarati_number($item_purchase->item_qty)}}</td>
                                             @else
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$item_purchase->item_name->item_name}}</td>
-                                                <td>{{$item_purchase->item_quantity}}</td>
+                                                <td>{{$item_purchase->item_qty}}</td>
                                             @endif
-                                            <td>{{get_rupee_currency($item_purchase->Purchase_Rate)}}</td>
-                                            <td>{{get_rupee_currency($item_purchase->Sales_Rates)}}</td>
+                                            <td>{{get_rupee_currency($item_purchase->purchase_rate)}}</td>
+                                            <td>{{get_rupee_currency($item_purchase->sales_rate)}}</td>
                                             @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                 <td>{{gujarati_date($item_purchase->purchase_date)}} </td>
                                             @else
@@ -213,9 +213,9 @@
                                                name="field[item_name_id]"
                                                value="item_name_id">
                                         <label for="customer_name"> @lang('langs.item_name') </label><br>
-                                        <input type="checkbox" id="Sales_Rates" class="check_all"
-                                               name="field[Sales_Rates]"
-                                               value="Sales_Rates">
+                                        <input type="checkbox" id="sales_rate" class="check_all"
+                                               name="field[sales_rate]"
+                                               value="sales_rate">
                                         <label for="Sales_Rates"> @lang('langs.Sales_Rates')</label><br>
                                         <input type="checkbox" id="purchase_date" class="check_all"
                                                name="field[purchase_date]"
@@ -224,9 +224,9 @@
 
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="item_quantity" class="check_all"
-                                               name="field[item_quantity]"
-                                               value="item_sales_id">
+                                        <input type="checkbox" id="item_qty" class="check_all"
+                                               name="field[item_qty]"
+                                               value="item_qty">
                                         <label for="bank_name"> @lang('langs.itemQuantity')</label><br>
                                         <input type="checkbox" id="created_at" class="check_all"
                                                name="field[created_at]"
@@ -235,13 +235,13 @@
 
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="Purchase_Rate" class="check_all"
-                                               name="field[Purchase_Rate]"
-                                               value="Purchase_Rate">
+                                        <input type="checkbox" id="purchase_rate" class="check_all"
+                                               name="field[purchase_rate]"
+                                               value="purchase_rate">
                                         <label for="Purchase_Rate"> @lang('langs.Purchase_Rate')</label><br>
-                                        <input type="checkbox" id="created_by" class="check_all"
-                                               name="field[created_by]"
-                                               value="created_by">
+                                        <input type="checkbox" id="insertedByUserId" class="check_all"
+                                               name="field[insertedByUserId]"
+                                               value="insertedByUserId">
                                         <label for="created_by"> @lang('langs.created_by')</label><br>
                                     </div>
                                     <span style="color: red;margin-left: 301px;">{{$errors->first('field')}}</span>

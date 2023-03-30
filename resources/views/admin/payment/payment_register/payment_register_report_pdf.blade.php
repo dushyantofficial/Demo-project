@@ -79,7 +79,7 @@
                             <td style="padding: 7px;">@lang('langs.customer_no')</td>
                             <td style="padding: 7px;">@lang('langs.customer_name')</td>
                             <td style="padding: 7px;">@lang('langs.customer_code')</td>
-                            <td style="padding: 7px;"">@lang('langs.mobile_number')</td>
+                            <td style="padding: 7px;">@lang('langs.mobile_number')</td>
                             <td style="padding: 7px;">@lang('langs.bank_name')</td>
                             @if(request()->check == 'account_number' || request()->check == null)
                                 <td style="padding: 7px;">@lang('langs.account_number')</td>
@@ -96,12 +96,12 @@
 
                                 <td style="padding: 7px;">{{ $loop->iteration }}</td>
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                <td class="ml-1 mr-1">{{translateToGujarati($payment_register_report_pdf->customer_name)}}</td>
+                                <td class="ml-1 mr-1">{{translateToGujarati($payment_register_report_pdf->cust_name)}}</td>
                                 @else
-                                    <td class="ml-1 mr-1">{{$payment_register_report_pdf->customer_name}}</td>
+                                    <td class="ml-1 mr-1">{{$payment_register_report_pdf->cust_name}}</td>
                                 @endif
-                                <td class="ml-1 mr-1">{{$payment_register_report_pdf->customer_code}}</td>
-                                <td style="padding: 7px;">{{$payment_register_report_pdf->user->mobile_number}}</td>
+                                <td class="ml-1 mr-1">{{$payment_register_report_pdf->cust_code}}</td>
+                                <td style="padding: 7px;">{{$payment_register_report_pdf->user->mobile}}</td>
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                 <td style="padding: 7px;">{{translateToGujarati($payment_register_report_pdf->bank_name)}}</td>
                                 @else

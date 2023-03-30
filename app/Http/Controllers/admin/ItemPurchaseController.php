@@ -35,7 +35,7 @@ class ItemPurchaseController extends Controller
     {
         $request->validate(ItemPurchase::$rules);
         $input = $request->all();
-        $input['created_by'] = Auth::user()->id;
+        $input['InsertedByUserId'] = Auth::user()->id;
         ItemPurchase::create($input);
         return redirect()->route('item_purchase.index')->with('success', Lang::get('langs.flash_suc'));
 

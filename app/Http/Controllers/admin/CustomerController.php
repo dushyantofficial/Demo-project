@@ -44,7 +44,7 @@ class CustomerController extends Controller
         ]);
 
         $input = $request->all();
-        $input['created_by'] = Auth::user()->id;
+        $input['InsertedByUserId'] = Auth::user()->id;
         Customers::create($input);
         return redirect()->route('customer.index')->with('success', Lang::get('langs.flash_suc'));
 

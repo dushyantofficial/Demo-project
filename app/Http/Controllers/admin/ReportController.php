@@ -18,7 +18,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $filter_customers = Customers::orderBy('id','desc')->get();
+            $filter_customers = Customers::orderBy('cust_id','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -28,7 +28,7 @@ class ReportController extends Controller
             }
             return view('admin.report.customer.customer_report_show', compact('filter_customers'));
         }
-        $filter_customers = Customers::where('user_id', $user->id)->orderBy('id','desc')->get();
+        $filter_customers = Customers::where('user_id', $user->id)->orderBy('cust_id','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
@@ -44,7 +44,7 @@ class ReportController extends Controller
 
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $filter_customer_reports = Customers::orderBy('id','desc')->get();
+            $filter_customer_reports = Customers::orderBy('cust_id','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -61,7 +61,7 @@ class ReportController extends Controller
                 return $pdf->download('customer_report.pdf');
             }
         }
-        $filter_customer_reports = Customers::where('user_id', $user->id)->orderBy('id','desc')->get();
+        $filter_customer_reports = Customers::where('user_id', $user->id)->orderBy('cust_id','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
@@ -165,7 +165,7 @@ class ReportController extends Controller
 
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $item_names = ItemName::orderBy('id','desc')->get();
+            $item_names = ItemName::orderBy('item_id','desc')->get();
             if ($request->date || $request->item_name) {
                 $item_names = ItemName::all();
                 $date = $request->date;
@@ -178,7 +178,7 @@ class ReportController extends Controller
             }
             return view('admin.report.item_name.item_name_report_show', compact('item_names'));
         }
-        $item_names = ItemName::where('created_by', $user->id)->orderBy('id','desc')->get();
+        $item_names = ItemName::where('insertedByUserId', $user->id)->orderBy('item_id','desc')->get();
         if ($request->date || $request->item_name) {
             $item_names = ItemName::all();
             $date = $request->date;
@@ -196,7 +196,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $item_name_reports = ItemName::orderBy('id','desc')->get();
+            $item_name_reports = ItemName::orderBy('item_id','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -213,13 +213,13 @@ class ReportController extends Controller
                 return $pdf->download('item_name_report.pdf');
             }
         }
-        $item_name_reports = ItemName::where('created_by', $user->id)->orderBy('id','desc')->get();
+        $item_name_reports = ItemName::where('insertedByUserId', $user->id)->orderBy('item_id','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_name_reports = ItemName::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_name_reports = ItemName::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->get();
         }
         $item_salesPaper = array(0, 0, 1000.00, 900.80);
@@ -255,13 +255,13 @@ class ReportController extends Controller
                 return $pdf->download('item_name_report.pdf');
             }
         }
-        $item_name_reports = ItemName::where('created_by', $user->id)->select($val)->get();
+        $item_name_reports = ItemName::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_name_reports = ItemName::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_name_reports = ItemName::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
         $item_namePaper = array(0, 0, 1000.00, 900.80);
@@ -296,13 +296,13 @@ class ReportController extends Controller
             }
             return view('admin.report.item_name.item_name_export_report', compact('item_name_reports', 'input'));
         }
-        $item_name_reports = ItemName::where('created_by', $user->id)->select($val)->get();
+        $item_name_reports = ItemName::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_name_reports = ItemName::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_name_reports = ItemName::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
         return view('admin.report.item_name.item_name_export_report', compact('item_name_reports', 'input'));
@@ -314,7 +314,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $filter_item_sales = ItemSales::orderBy('id','desc')->get();
+            $filter_item_sales = ItemSales::orderBy('ItemSalesId','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -326,13 +326,13 @@ class ReportController extends Controller
             }
             return view('admin.report.item_sales.item_sales_report_show', compact('filter_item_sales'));
         }
-        $filter_item_sales = ItemSales::where('created_by', $user->id)->orderBy('id','desc')->get();
+        $filter_item_sales = ItemSales::where('insertedByUserId', $user->id)->orderBy('ItemSalesId','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $filter_item_sales = ItemSales::where('created_by', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->get();
+            $filter_item_sales = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->get();
             //    return view('admin.report.item_sales.item_sales_report',compact('filter_item_sales'));
 
         }
@@ -344,7 +344,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $item_sales_reports = ItemSales::orderBy('id','desc')->get();
+            $item_sales_reports = ItemSales::orderBy('ItemSalesId','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -361,13 +361,13 @@ class ReportController extends Controller
                 return $pdf->download('item_sales_report.pdf');
             }
         }
-        $item_sales_reports = ItemSales::where('created_by', $user->id)->orderBy('id','desc')->get();
+        $item_sales_reports = ItemSales::where('insertedByUserId', $user->id)->orderBy('ItemSalesId','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_sales_reports = ItemSales::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_sales_reports = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->get();
         }
         $item_salesPaper = array(0, 0, 1000.00, 900.80);
@@ -403,13 +403,13 @@ class ReportController extends Controller
             }
             return view('admin.report.item_sales.item_sales_export_report', compact('item_saless', 'input'));
         }
-        $item_saless = ItemSales::where('created_by', $user->id)->select($val)->get();
+        $item_saless = ItemSales::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_saless = ItemSales::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_saless = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
         return view('admin.report.item_sales.item_sales_export_report', compact('item_saless', 'input'));
@@ -443,13 +443,13 @@ class ReportController extends Controller
                 return $pdf->download('item_sales_report.pdf');
             }
         }
-        $item_sales_reports = ItemSales::where('created_by', $user->id)->select($val)->get();
+        $item_sales_reports = ItemSales::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_sales_reports = ItemSales::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_sales_reports = ItemSales::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
 
@@ -468,7 +468,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $filter_item_purchase = ItemPurchase::orderBy('id','desc')->get();
+            $filter_item_purchase = ItemPurchase::orderBy('purchase_id','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -480,13 +480,13 @@ class ReportController extends Controller
             }
             return view('admin.report.item_purchase.item_purchase_report_show', compact('filter_item_purchase'));
         }
-        $filter_item_purchase = ItemPurchase::where('created_by', $user->id)->orderBy('id','desc')->get();
+        $filter_item_purchase = ItemPurchase::where('insertedByUserId', $user->id)->orderBy('purchase_id','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $filter_item_purchase = ItemPurchase::where('created_by', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->get();
+            $filter_item_purchase = ItemPurchase::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end)->get();
 //            return view('admin.report.item_purchase.item_purchase_report',compact('filter_item_purchase'));
 
         }
@@ -498,7 +498,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         if ($user->role == config('constants.ROLE.ADMIN')) {
-            $item_purchase_reports = ItemPurchase::orderBy('id','desc')->get();
+            $item_purchase_reports = ItemPurchase::orderBy('purchase_id','desc')->get();
             if ($request->date) {
                 $date = $request->date;
                 $name = explode(' ', $date);
@@ -515,13 +515,13 @@ class ReportController extends Controller
                 return $pdf->download('item_purchase_report.pdf');
             }
         }
-        $item_purchase_reports = ItemPurchase::where('created_by', $user->id)->orderBy('id','desc')->get();
+        $item_purchase_reports = ItemPurchase::where('insertedByUserId', $user->id)->orderBy('purchase_id','desc')->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_purchase_reports = ItemPurchase::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_purchase_reports = ItemPurchase::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->get();
         }
         $item_purchasePaper = array(0, 0, 1000.00, 900.80);
@@ -558,13 +558,13 @@ class ReportController extends Controller
                 return $pdf->download('item_purchase_report.pdf');
             }
         }
-        $item_purchase_reports = ItemPurchase::where('created_by', $user->id)->select($val)->get();
+        $item_purchase_reports = ItemPurchase::where('insertedByUserId', $user->id)->select($val)->get();
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_purchase_reports = ItemPurchase::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_purchase_reports = ItemPurchase::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
         $item_purchasePaper = array(0, 0, 1000.00, 900.80);
@@ -601,14 +601,14 @@ class ReportController extends Controller
             }
             return view('admin.report.item_purchase.item_purchase_export_report', compact('item_purchases', 'input'));
         }
-        $item_purchases = ItemPurchase::where('created_by', $user->id)->select($val)->get();
+        $item_purchases = ItemPurchase::where('insertedByUserId', $user->id)->select($val)->get();
 
         if ($request->date) {
             $date = $request->date;
             $name = explode(' ', $date);
             $start = date('Y-m-d', strtotime($name[0]));
             $end = date('Y-m-d', strtotime($name[2]));
-            $item_purchases = ItemPurchase::where('created_by', $user->id)->whereDate('created_at', '>=', $start)
+            $item_purchases = ItemPurchase::where('insertedByUserId', $user->id)->whereDate('created_at', '>=', $start)
                 ->whereDate('created_at', '<=', $end)->select($val)->get();
         }
         return view('admin.report.item_purchase.item_purchase_export_report', compact('item_purchases', 'input'));

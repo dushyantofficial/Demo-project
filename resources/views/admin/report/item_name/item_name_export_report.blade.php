@@ -64,7 +64,7 @@
                                             <th> @lang('langs.item_name')</th>
 
                                         @endif
-                                        @if(isset($input['field']['created_by']))
+                                        @if(isset($input['field']['insertedByUserId']))
                                             <th> @lang('langs.created_by')</th>
 
                                         @endif
@@ -90,7 +90,7 @@
                                                     <td>{{$item_name_report->item_name}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['created_by']))
+                                            @if(isset($input['field']['insertedByUserId']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{translateToGujarati($item_name_report->created_bys->user_name)}} </td>
                                                 @else
@@ -128,7 +128,7 @@
                                     <th> @lang('langs.item_name')</th>
 
                                 @endif
-                                @if(isset($input['field']['created_by']))
+                                @if(isset($input['field']['insertedByUserId']))
                                     <th> @lang('langs.created_by')</th>
 
                                 @endif
@@ -155,7 +155,7 @@
                                                 <td>{{$item_name_report->item_name}} </td>
                                             @endif
                                         @endif
-                                        @if(isset($input['field']['created_by']))
+                                        @if(isset($input['field']['insertedByUserId']))
                                             @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                 <td>{{translateToGujarati($item_name_report->created_bys->user_name)}} </td>
                                             @else

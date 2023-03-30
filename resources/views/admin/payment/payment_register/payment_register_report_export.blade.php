@@ -60,11 +60,11 @@
                                             <th> @lang('langs.mobile_number')</th>
                                         @endif
 
-                                        @if(isset($input['field']['customer_name']))
+                                        @if(isset($input['field']['cust_name']))
                                             <th> @lang('langs.customer_name')</th>
 
                                         @endif
-                                        @if(isset($input['field']['customer_code']))
+                                        @if(isset($input['field']['cust_code']))
                                             <th> @lang('langs.customer_code')</th>
 
                                         @endif
@@ -105,23 +105,23 @@
 
                                             @if(isset($input['field']['user_id']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                <td>{{gujarati_number($customer->user->mobile_number)}} </td>
+                                                <td>{{gujarati_number($customer->user->mobile)}} </td>
                                                 @else
                                                     <td>{{$customer->user->mobile_number}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['customer_name']))
+                                            @if(isset($input['field']['cust_name']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td>{{translateToGujarati($customer->customer_name)}} </td>
+                                                    <td>{{translateToGujarati($customer->cust_name)}} </td>
                                                 @else
-                                                    <td>{{$customer->customer_name}} </td>
+                                                    <td>{{$customer->cust_name}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['customer_code']))
+                                            @if(isset($input['field']['cust_code']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                <td>{{gujarati_number($customer->customer_code)}} </td>
+                                                <td>{{gujarati_number($customer->cust_code)}} </td>
                                                 @else
-                                                    <td>{{$customer->customer_code}} </td>
+                                                    <td>{{$customer->cust_code}} </td>
                                                 @endif
                                             @endif
                                             @if(isset($input['field']['bank_name']))
@@ -175,11 +175,11 @@
                                             <th> @lang('langs.mobile_number')</th>
                                         @endif
 
-                                        @if(isset($input['field']['customer_name']))
+                                        @if(isset($input['field']['cust_name']))
                                             <th> @lang('langs.customer_name')</th>
 
                                         @endif
-                                        @if(isset($input['field']['customer_code']))
+                                        @if(isset($input['field']['cust_code']))
                                             <th> @lang('langs.customer_code')</th>
 
                                         @endif
@@ -219,23 +219,23 @@
 
                                             @if(isset($input['field']['user_id']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                <td>{{gujarati_number($customer->user->mobile_number)}} </td>
+                                                <td>{{gujarati_number($customer->user->mobile)}} </td>
                                                 @else
                                                     <td>{{$customer->user->mobile_number}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['customer_name']))
+                                            @if(isset($input['field']['cust_name']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td>{{translateToGujarati($customer->customer_name)}} </td>
+                                                    <td>{{translateToGujarati($customer->cust_name)}} </td>
                                                 @else
-                                                    <td>{{$customer->customer_name}} </td>
+                                                    <td>{{$customer->cust_name}} </td>
                                                 @endif
                                             @endif
-                                            @if(isset($input['field']['customer_code']))
+                                            @if(isset($input['field']['cust_code']))
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                <td>{{gujarati_number($customer->customer_code)}} </td>
+                                                <td>{{gujarati_number($customer->cust_code)}} </td>
                                                 @else
-                                                    <td>{{$customer->customer_code}} </td>
+                                                    <td>{{$customer->cust_code}} </td>
                                                 @endif
                                             @endif
                                             @if(isset($input['field']['bank_name']))

@@ -97,14 +97,14 @@
                                             <tr>
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                     <td>{{gujarati_number($loop->iteration)}}</td>
-                                                    <td>{{translateToGujarati($customer->customer_name)}}</td>
-                                                    <td>{{gujarati_number($customer->customer_code)}}</td>
+                                                    <td>{{translateToGujarati($customer->cust_name)}}</td>
+                                                    <td>{{gujarati_number($customer->cust_code)}}</td>
                                                     <td>{{translateToGujarati($customer->bank_name)}}</td>
                                                     <td>{{gujarati_number($customer->account_number)}}</td>
                                                 @else
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$customer->customer_name}}</td>
-                                                    <td>{{$customer->customer_code}}</td>
+                                                    <td>{{$customer->cust_name}}</td>
+                                                    <td>{{$customer->cust_code}}</td>
                                                     <td>{{$customer->bank_name}}</td>
                                                     <td>{{$customer->account_number}}</td>
                                                 @endif
@@ -153,14 +153,14 @@
                             <tr>
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                     <td>{{gujarati_number($loop->iteration)}}</td>
-                                    <td>{{translateToGujarati($customer->customer_name)}}</td>
-                                    <td>{{gujarati_number($customer->customer_code)}}</td>
+                                    <td>{{translateToGujarati($customer->cust_name)}}</td>
+                                    <td>{{gujarati_number($customer->cust_code)}}</td>
                                     <td>{{translateToGujarati($customer->bank_name)}}</td>
                                     <td>{{gujarati_number($customer->account_number)}}</td>
                                 @else
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$customer->customer_name}}</td>
-                                    <td>{{$customer->customer_code}}</td>
+                                    <td>{{$customer->cust_name}}</td>
+                                    <td>{{$customer->cust_code}}</td>
                                     <td>{{$customer->bank_name}}</td>
                                     <td>{{$customer->account_number}}</td>
                                 @endif
@@ -221,14 +221,14 @@
 
 
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="customer_name" name="field[customer_name]"
-                                               class="check_all" value="customer_name">
+                                        <input type="checkbox" id="customer_name" name="field[cust_name]"
+                                               class="check_all" value="cust_name">
                                         <label for="customer_name"> @lang('langs.customer_name') </label><br>
                                         <input type="checkbox" id="final_amount" name="field[final_amount]"
                                                class="check_all" value="final_amount">
                                         <label for="admission_number"> @lang('langs.final_amount')</label><br>
-                                        <input type="checkbox" id="created_by" name="field[created_by]"
-                                               class="check_all" value="created_by">
+                                        <input type="checkbox" id="insertedByUserId" name="field[insertedByUserId]"
+                                               class="check_all" value="insertedByUserId">
                                         <label for="admission_number"> @lang('langs.created_by')</label><br>
                                     </div>
 
@@ -240,9 +240,9 @@
                                                name="field[created_at]"
                                                value="created_at">
                                         <label for="dob">@lang('langs.created_at')</label><br>
-                                        <input type="checkbox" class="check_all" id="customer_code"
-                                               name="field[customer_code]"
-                                               value="customer_code">
+                                        <input type="checkbox" class="check_all" id="cust_code"
+                                               name="field[cust_code]"
+                                               value="cust_code">
                                         <label for="dob">@lang('langs.customer_code')</label><br>
 
 

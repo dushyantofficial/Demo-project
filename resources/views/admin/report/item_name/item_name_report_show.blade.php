@@ -196,9 +196,9 @@
 
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="created_by" class="check_all"
-                                               name="field[created_by]"
-                                               value="created_by">
+                                        <input type="checkbox" id="insertedByUserId" class="check_all"
+                                               name="field[insertedByUserId]"
+                                               value="insertedByUserId">
                                         <label for="admission_date"> @lang('langs.created_by')</label><br>
 
                                     </div>

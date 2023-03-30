@@ -13,10 +13,10 @@ class ItemSales extends Model
     public static $rules = [
         'payment_from_date' => 'required',
         'payment_to_date' => 'required',
-        'item_quantity' => 'required',
-        'customer_photo' => 'required',
-        'item_name_id' => 'required',
-        'customer_id' => 'required',
+        'ItemQty' => 'required',
+        'CustPhoto' => 'required',
+        'ItemId' => 'required',
+        'CustId' => 'required',
         'entry_date' => 'required',
         'deduct_from_date' => 'required',
         'deduct_to_date' => 'required',
@@ -39,26 +39,26 @@ class ItemSales extends Model
         'deduct_payment',
         'total',
         'total_quantity',
-        'customer_id',
-        'item_name_id',
-        'item_quantity',
-        'customer_photo',
-        'created_by',
+        'CustId',
+        'ItemId',
+        'ItemQty',
+        'CustPhoto',
+        'InsertedByUserId',
     ];
 
     public function customers()
     {
-        return $this->belongsTo(Customers::class, 'customer_id');
+        return $this->belongsTo(Customers::class, 'CustId');
     }
 
     public function item_names()
     {
-        return $this->belongsTo(ItemPurchase::class, 'item_name_id');
+        return $this->belongsTo(ItemPurchase::class, 'ItemId');
     }
 
     public function created_name()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class, 'insertedByUserId');
     }
 
 }

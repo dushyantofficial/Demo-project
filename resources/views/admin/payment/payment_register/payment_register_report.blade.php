@@ -196,13 +196,13 @@
                                                     <td>{{$loop->iteration}}</td>
                                                 @endif
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                                    <td>{{translateToGujarati($customer->customer_name)}}</td>
-                                                    <td>{{gujarati_number($customer->customer_code)}}</td>
-                                                    <td>{{gujarati_number($customer->user->mobile_number)}}</td>
+                                                    <td>{{translateToGujarati($customer->cust_name)}}</td>
+                                                    <td>{{gujarati_number($customer->cust_code)}}</td>
+                                                    <td>{{gujarati_number($customer->user->mobile)}}</td>
                                                 @else
-                                                    <td>{{$customer->customer_name}}</td>
-                                                    <td>{{$customer->customer_code}}</td>
-                                                    <td>{{$customer->user->mobile_number}}</td>
+                                                    <td>{{$customer->cust_name}}</td>
+                                                    <td>{{$customer->cust_code}}</td>
+                                                    <td>{{$customer->user->mobile}}</td>
                                                 @endif
                                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
                                                 <td>{{translateToGujarati($customer->bank_name)}}</td>
@@ -266,12 +266,12 @@
                                     <td>{{$loop->iteration}}</td>
                                 @endif
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
-                                    <td>{{translateToGujarati($customer->customer_name)}}</td>
-                                    <td>{{gujarati_number($customer->customer_code)}}</td>
-                                    <td>{{gujarati_number($customer->user->mobile_number)}}</td>
+                                    <td>{{translateToGujarati($customer->cust_name)}}</td>
+                                    <td>{{gujarati_number($customer->cust_code)}}</td>
+                                    <td>{{gujarati_number($customer->user->mobile)}}</td>
                                 @else
-                                    <td>{{$customer->customer_name}}</td>
-                                    <td>{{$customer->customer_code}}</td>
+                                    <td>{{$customer->cust_name}}</td>
+                                    <td>{{$customer->cust_code}}</td>
                                     <td>{{$customer->user->mobile_number}}</td>
                                 @endif
                                 @if(\Illuminate\Support\Facades\Auth::user()->lang == 'guj')
@@ -339,15 +339,15 @@
 
 
                                     <div class="col-md-2">
-                                        <input type="checkbox" id="customer_name" name="field[customer_name]"
-                                               class="check_all" value="customer_name">
+                                        <input type="checkbox" id="customer_name" name="field[cust_name]"
+                                               class="check_all" value="cust_name">
                                         <label for="customer_name"> @lang('langs.customer_name') </label><br>
                                         <input type="checkbox" id="final_amount" name="field[final_amount]"
                                                class="check_all" value="final_amount">
                                         <label for="admission_number"> @lang('langs.final_amount')</label><br>
                                         <input type="checkbox" class="check_all" id="customer_code"
-                                               name="field[customer_code]"
-                                               value="customer_code">
+                                               name="field[cust_code]"
+                                               value="cust_code">
                                         <label for="dob">@lang('langs.customer_code')</label><br>
                                     </div>
 
